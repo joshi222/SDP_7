@@ -4,6 +4,17 @@ import { connect } from "react-redux";
 import { unirest } from "unirest";
 import axios from 'axios';
 class Checkout extends Component {
+
+
+
+ 
+componentDidMount() {
+ // console.log(localStorage.getItem("bookevent"));
+  //this.setState({token:localStorage.getItem("token")})
+  this.setState({amount:localStorage.getItem("amount")})
+ this.setState({bookevent:JSON.parse(localStorage.getItem("bookevent"))})
+}
+
   constructor(props) {
     
     super(props);
@@ -45,13 +56,15 @@ this.setState({amount:localStorage.getItem("amount")})
         //alert(response.razorpay_payment_id);
         //console.log(book);   
         
+
         axios.post('http://localhost:5000/routes/bookevent/book',book)
         .then(res => console.log(res.data))
 
 
         axios.post('http://localhost:5000/routes/bookevent1/book1',book)
         .then(res => console.log(res.data))
-       //  window.location = '/home';
+         window.location = '/home';
+
 
 
 

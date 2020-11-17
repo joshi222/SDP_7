@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Checkout from './paymentController';
 import { connect } from "react-redux"
-import img from '../img/payment.jpeg'
+import img from '../img/payment.png'
+
 class Payment extends Component {
     render() {
         return (
@@ -12,14 +13,19 @@ class Payment extends Component {
             // </div>
             <div className="card mx-auto card-border " style={{width: "20rem"}}>
             <img className="card-img-top " src={img} alt="Card image cap"/>
+
             <div className="card-body">
               <h2 className="card-title" style={{textAlign:"center",marginBottom:"30px",marginTop:"20px"}}>Make Payment</h2>
+
+            <div class="card-body">
+              <h2 class="card-title" style={{textAlign:"center",marginBottom:"30px",marginTop:"20px"}}>Make Payment</h2>
+
               
                 <Checkout />
                 <br></br>
             </div>
           </div>
-
+     </div>
         )
     }
 }

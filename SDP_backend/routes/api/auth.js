@@ -45,6 +45,21 @@ router.get('/displayevent', auth, async (req, res) => {
 })
 });
 
+router.get('/displayevent', auth, async (req, res) => {
+    //const user = jwt.verify(req.body.token, jwtSecret);
+    const userId = req.user.id;
+    console.log(req.user.id);
+   User.findById(
+      {_id: userId},
+  ).then((founduser) => {
+    res.json({event: founduser.registeredEvents});
+    //req.user = user;
+    //console.log(founduser);
+    //res.redirect("http://localhost:3000/EmailVerified"); });
+
+})
+});
+
 router.get('/verify/:token',async(req,res)=> {
   try {
     const user = jwt.verify(req.params.token, jwtSecret);
