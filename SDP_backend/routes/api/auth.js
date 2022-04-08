@@ -29,6 +29,24 @@ router.route('/totaluser').get(function(req, res){
      }
    });
  });
+<<<<<<< HEAD
+=======
+
+router.get('/displayevent', auth, async (req, res) => {
+    //const user = jwt.verify(req.body.token, jwtSecret);
+    const userId = req.user.id;
+    console.log(req.user.id);
+   User.findById(
+      {_id: userId},
+  ).then((founduser) => {
+    res.json({event: founduser.registeredEvents});
+    //req.user = user;
+    //console.log(founduser);
+    //res.redirect("http://localhost:3000/EmailVerified"); });
+
+})
+});
+>>>>>>> f46e77cf9ffd78b2f274fa30e903712d2e216f3f
 
 router.get('/displayevent', auth, async (req, res) => {
     //const user = jwt.verify(req.body.token, jwtSecret);
