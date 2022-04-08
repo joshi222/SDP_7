@@ -21,6 +21,7 @@ import img from '../img/back2.jpg'
       contact_details:'',
       description:'',
       amount:'',
+      url:'',
       req_participant:1,
       redirect1:false,
       redirect2:false,
@@ -29,8 +30,7 @@ import img from '../img/back2.jpg'
       redirect5:false,
       redirect6:false,
       redirect7:false,
-      redirect8:false,
-      registered:false
+      redirect8:false
    };
   // this.rowCallback= this.rowCallback.bind(this);
       //  this.state = {events: []};
@@ -52,7 +52,7 @@ import img from '../img/back2.jpg'
               description: response.data.description,
               amount:response.data.amount,
               req_participant:response.data.req_participant,
-              registered: response.data.registered
+              url:response.data.url
              })
             this.props.addAmount(response.data.amount)
             localStorage.setItem('amount', response.data.amount);
@@ -141,7 +141,7 @@ import img from '../img/back2.jpg'
       const ereq_part =this.state.req_participant;
       const data = {ename,etime,edate};
       
-  
+    console.log(this.state.url);
    
   //    <Form3 ename={this.state.eventname}/>
     //let dataevent=[{this.state.eventname,time,date}]
@@ -168,40 +168,41 @@ import img from '../img/back2.jpg'
               </thead>
          
             </table> */}
+          
             <div className="row">
               <div className="col mx-auto">
-                  <img className="card-img-top" style={{padding:'40px'}} src={img} alt="Card image cap"/>
+                  <img className="card-img-top" style={{padding:'40px'}} src={this.state.url} alt="Card image cap"/>
               </div>
-              <div className="col">
+              <div className="col" style={{color:"white"}}>
                     <h1>{this.state.eventname}</h1>
                     <br></br>
-                    <h3>Contact Details</h3>
-                    <h5 style={{marginBottom:'40px'}}>{this.state.contact_details}</h5>
                   
                     <h3>Description</h3>
-                    <h5 style={{marginBottom:'40px'}}>{this.state.description}</h5>
+                    <h5 style={{marginBottom:'40px',color:"white"}}>{this.state.description}</h5>
+
+                    <h3>Contact Details</h3>
+                    <h5 style={{marginBottom:'40px',color:"white"}}>{this.state.contact_details}</h5>
                   
-                    <div className="row" style={{textAlign:"center",marginLeft:'4px'}}>
+                    <div className="row" style={{textAlign:"center",marginLeft:'4px',color:"white"}}>
 
                     <h3>Amount:</h3>
-                    <h5 style={{marginTop:"7px",marginLeft:'6px'}}> {this.state.amount} ₹</h5>
+                    <h5 style={{marginTop:"7px",marginLeft:'6px',color:"white"}}> {this.state.amount} ₹</h5>
 
-                    <h3 style={{marginLeft:'50px'}}>Required participants:</h3>
-                    <h5 style={{marginTop:"7px",marginLeft:'6px'}}>{this.state.req_participant}</h5>
+                    <h3 style={{marginLeft:'50px',color:"white"}}>Required participants:</h3>
+                    <h5 style={{marginTop:"7px",marginLeft:'6px',color:"white"}}>{this.state.req_participant}</h5>
 
                     </div>
                     
-                    <div style={ !this.state.registered ? {marginTop: "20px"} : { display: "none" } }  >
-                        <Button  type="button" className="btn btn-dark btn-lg"  style={ !this.state.registered ? {width:"20%"} : { display: "none" } } onClick={()=>this.check(ereq_part)}> Register </Button>
+                    <div style={{marginTop:"20px"}} >
+                        <Button  type="button" className="btn btn-warning btn-lg" style={{width:"20%"}} onClick={()=>this.check(ereq_part)}> Register </Button>
                     </div>
+                  
               </div>
             </div>
            { console.log(data) } 
           
            {this.renderRedirect()}
             
-           
-
           </div>  
        
         );

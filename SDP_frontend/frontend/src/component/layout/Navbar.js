@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Navbar(props) {
   return (
-    <nav className='navbar bg-dark'>
+    <nav className='navbar navbar-toggleable-sm navbar-trans navbar-inverse'>
+      
       <h1>
         <Link to='/'>
           <i className='fas fa-code'></i> Felicific 2021
@@ -30,7 +31,7 @@ function Navbar(props) {
                     <Link to ="/profile/:id" className="nav-link"> My Profile   </Link>
                     </li> */}
                     <li className="navbar-item"> 
-                    <Link to="/profile" className="nav-link">Profile </Link>
+                    <Link to="/profile" className="nav-link">Your Profile </Link>
                     </li>
                     <li className="navbar-item">
                     <Link to="/contact" className="nav-link"> Contact Us  </Link>
@@ -39,6 +40,7 @@ function Navbar(props) {
                     <Link to="/" className="nav-link"> Logout </Link>
                     </li>
       </ul>
+ 
     </nav>
   );
 }

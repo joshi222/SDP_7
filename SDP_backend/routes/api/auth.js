@@ -20,6 +20,15 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+router.route('/totaluser').get(function(req, res){
+  User.countDocuments({ }, function(err, result) {
+     if (err) {
+       res.send(err);
+     } else {
+       res.json(result);
+     }
+   });
+ });
 
 router.get('/displayevent', auth, async (req, res) => {
     //const user = jwt.verify(req.body.token, jwtSecret);

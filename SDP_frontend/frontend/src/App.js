@@ -19,7 +19,6 @@ import EventDay4 from "./component/eventday4";
 import EventDay5 from "./component/eventday5";
 import AdminHome from "./component/adminhome";
 import AddEvent from "./component/addevent";
-import AdminEvent from "./component/admin";
 import EditEvent from "./component/editevent";
 import Details from "./component/detailpage";
 import Form1 from "./component/form/form1";
@@ -31,20 +30,30 @@ import Form6 from "./component/form/form6";
 import Form7 from "./component/form/form7";
 import Form8 from "./component/form/form8";
 import Payment from "./component/payment";
-import UserProfile from "./component/profiles/userprofile";
+import UserProfile from "./component/userprofile";
+import AdminDetail from "./component/adminDetail";
+//import UserProfile from "./component/profiles/userprofile";
 import EmailVerified from "./component/auth/EmailVerified";
+import EditProfile from "./component/editprofile";
+
 
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 import { Form } from 'reactstrap';
-
+import {routerActions} from 'react-router-redux';
+import {UserAuthWrapper} from 'redux-auth-wrapper';
 
 if(localStorage.token) {
     setAuthToken(localStorage.token);
   }
-
+/*  const UserIsAuthenticated = UserAuthWrapper({
+    authSelector: state => state.auth, // how to get the user state
+    predicate: (auth) => auth.isAuthenticated, // function to run against the auth state to determine if authenticated
+    redirectAction: routerActions.replace, // the redux action to dispatch for redirect
+    wrapperDisplayName: 'UserIsAuthenticated' // a nice name for this auth check
+  }); */
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -73,8 +82,7 @@ const App = () => {
         <Route path="/day4event" component={EventDay4} />
         <Route path="/day5event" component={EventDay5} />
         <Route path="/admin" component={AdminHome} />
-        <Route path="/admin/addevent" component={AddEvent} />
-        <Route path="/admin/adminevent" component={AdminEvent} />
+        <Route path="/addevent" component={AddEvent} />
         <Route path="/editevent/:id" component={EditEvent} />
         <Route path="/details/:id" component={Details} />
         <Route path="/register1/:id" component={Form1}/>
@@ -87,7 +95,10 @@ const App = () => {
         <Route path="/register8/:id" component={Form8}/>
         <Route path="/payment" component={Payment}/>
         <Route path="/profile" component={UserProfile}/>
+        <Route path="/adminDetail/:id" component={AdminDetail}/>
         <Route path="/EmailVerified" component={EmailVerified}/>
+        <Route path ="/edituser" component={EditProfile} />
+
       </Router>
     </Provider>
 
